@@ -63,11 +63,6 @@ We built a Flask-based dashboard with a clean, responsive frontend.
 + Run the Flask App: `python app.py`
 + Open in browser: `[Local Host ID]`
 
-## Contributors
-+ Mentor: [Dr. Tanupriya Choudhury](https://www.linkedin.com/in/tanupriya-choudhury-0811b926/)
-+ [Sukalp Jhingran](https://www.linkedin.com/in/sukalp-jhingran-485162262/)
-+ [Hardik Raj Kapoor](https://www.linkedin.com/in/hardik-raj-kapoor/)
-
 ## License
 This project is intended for academic demonstration purposes only. For external use, please contact the maintainers.
 Stay Mission-Ready. Predict. Prevent. Perform.
