@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Military Equipment Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    {% block content %}{% endblock %}
+    <script>
+        function toggleTheme() {
+            document.body.dataset.theme = 
+                document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', document.body.dataset.theme);
+        }
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) document.body.dataset.theme = savedTheme;
+        else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.dataset.theme = 'dark';
+        }
+    </script>
+</body>
+</html>
+

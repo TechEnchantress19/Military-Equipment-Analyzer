@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Military Equipment Analyzer</h1>
+    <div class="tiles">
+        <a href="/input/vehicle" class="tile" id="vehicle-tile">
+            <span class="emoji">🚙</span>
+            <span class="title">Vehicle</span>
+        </a>
+        <a href="/input/aircraft" class="tile" id="aircraft-tile">
+            <span class="emoji">✈️</span>
+            <span class="title">Aircraft</span>
+        </a>
+        <a href="/input/weapon" class="tile" id="weapon-tile">
+            <span class="emoji">🔫</span>
+            <span class="title">Weapon</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
+

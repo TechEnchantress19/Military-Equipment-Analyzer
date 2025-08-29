@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ eq_type }} Analysis Result</h2>
+    <h3>ID: {{ result.id }}</h3>
+    <p><strong>Model Used:</strong> {{ result.model_used }}</p>
+    <p><strong>Prediction:</strong> {{ result.prediction }}</p>
+    <div class="details">
+        <h4>Parameters</h4>
+        <ul>
+            <li><strong>Type:</strong> {{ result.details.Type }}</li>
+            <li><strong>Area:</strong> {{ result.details.Area }}</li>
+            <li><strong>Battalion:</strong> {{ result.details.Battalion }}</li>
+            <li><strong>Temperature:</strong> {{ result.details.Temperature }}</li>
+            <li><strong>Weather Conditions:</strong> {{ result.details['Weather Conditions'] }}</li>
+            <li><strong>Usage Hours:</strong> {{ result.details['Usage Hours'] }}</li>
+            <li><strong>Number of Failures:</strong> {{ result.details['Number of Failures'] }}</li>
+            <li><strong>Performance Metrics:</strong> {{ result.details['Performance Metrics'] }}</li>
+        </ul>
+    </div>
+    <div class="visualization">
+        <h4>Performance vs Usage Hours</h4>
+        <div id="chart-container" style="width: 100%; height: 300px;"></div>
+    </div>
+</div>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const data = [{
+            x: [{{ result.details['Usage Hours'] }}],
+            y: [{{ result.details['Performance Metrics'] }}],
+            mode: 'markers',
+            type: 'scatter',
+            marker: { size: 16, color: '#0078d7' },
+            name: '{{ result.id }}'
+        }];
+        const layout = {
+            title: 'Performance vs Usage Hours',
+            xaxis: { title: 'Usage Hours' },
+            yaxis: { title: 'Performance Metrics' }
+        };
+        Plotly.newPlot('chart-container', data, layout);
+    });
+</script>
+{% endblock %}
+

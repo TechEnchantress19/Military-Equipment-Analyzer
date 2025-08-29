@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Enter {{ eq_type }} ID</h2>
+    <form action="/predict" method="post">
+        <input type="text" name="eq_id" placeholder="Enter {{ eq_type }} ID" required>
+        <input type="hidden" name="eq_type" value="{{ eq_type }}">
+        
+        <div class="form-group">
+  <label for="model-select" class="form-label">Select Model</label>
+  <select id="model-select" name="model_type" class="form-select">
+    <option value="dt">Decision Tree</option>
+    <option value="svm">SVM</option>
+    <option value="rf">Random Forest</option>
+  </select>
+</div>
+
+        <button type="submit" class="submit-btn">Analyze</button>
+    </form>
+
+    <div class="model-metrics">
+        <h3>Model Evaluation Metrics (on test set)</h3>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+            </tr>
+            <tr>
+                <td>Decision Tree</td>
+                <td>{{ metrics.dt.accuracy | round(3) }}</td>
+                <td>{{ metrics.dt.precision | round(3) }}</td>
+                <td>{{ metrics.dt.recall | round(3) }}</td>
+                <td>{{ metrics.dt.f1 | round(3) }}</td>
+            </tr>
+            <tr>
+                <td>SVM</td>
+                <td>{{ metrics.svm.accuracy | round(3) }}</td>
+                <td>{{ metrics.svm.precision | round(3) }}</td>
+                <td>{{ metrics.svm.recall | round(3) }}</td>
+                <td>{{ metrics.svm.f1 | round(3) }}</td>
+            </tr>
+            <tr>
+                <td>Random Forest</td>
+                <td>{{ metrics.rf.accuracy | round(3) }}</td>
+                <td>{{ metrics.rf.precision | round(3) }}</td>
+                <td>{{ metrics.rf.recall | round(3) }}</td>
+                <td>{{ metrics.rf.f1 | round(3) }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
